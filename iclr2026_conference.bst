@@ -32,7 +32,7 @@
  %   and \citeyear to print the corresponding information.
  %
  % For version 7.0 of `natbib.sty', the KEY field replaces missing
- %   authors/editors, and the date is left blank in \bibitem.
+ %   authors/editors,  and the date is left blank in \bibitem.
  %
  % Includes field EID for the sequence/citation number of electronic journals
  %  which is used instead of page numbers.
