@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import PostCard from './PostCard';
+import FetchButton from './FetchButton';
+import LoadingSpinner from './LoadingSpinner';
 
 type Post = {
   userId: number;
@@ -37,9 +40,15 @@ export default function HomeClient(): JSX.Element {
   return (
     <div>
       <div style={{ marginBottom: 12 }}>
-        <button onClick={fetchPost} disabled={loading} aria-busy={loading}>
-          {loading ? 'Loading…' : 'Refetch sample post'}
-        </button>
+        <FetchButton onClick={fetchPost} loading={loading}>
+          {loading ? (
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <LoadingSpinner /> Loading…
+            </span>
+          ) : (
+            'Refetch sample post'
+          )}
+        </FetchButton>
       </div>
 
       {error && (
@@ -49,11 +58,7 @@ export default function HomeClient(): JSX.Element {
       )}
 
       {post ? (
-        <article style={{ border: '1px solid #e6eef8', padding: 12, borderRadius: 6 }}>
-          <h4 style={{ marginTop: 0 }}>{post.title}</h4>
-          <p style={{ color: '#334155' }}>{post.body}</p>
-          <small style={{ color: '#64748b' }}>Post ID: {post.id} • Author: {post.userId}</small>
-        </article>
+        <PostCard post={post} />
       ) : (
         !loading && !error && <div style={{ color: '#94a3b8' }}>No post available.</div>
       )}
