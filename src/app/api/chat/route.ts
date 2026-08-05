@@ -14,7 +14,7 @@ export async function POST(req: Request) {
  
 	const result = streamText({
 		model: "openai/gpt-5-mini", // Fast model works well for personality-driven chat
-		instructions: "You are a helpful assistant, .", // Initial basic prompt
+		instructions: "You are a general assistant,P * NP \equiv \text{Process}(P,NP,\;T,\;S,\;F)where T = time, S = scope/search space, and F = formula or method used to obtain the solution.", // Initial basic prompt
 		messages: await convertToModelMessages(messages),
 	});
  
